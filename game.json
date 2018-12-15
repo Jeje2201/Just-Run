@@ -125,6 +125,42 @@
         "name": "Images\\Entité\\Joueur\\hitbox.png",
         "smoothed": true,
         "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "Images/Entité/Joueur/ReadyToJump.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Images\\Entité\\Joueur\\ReadyToJump.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "Images/Platform/Wall.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Images\\Platform\\Wall.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "Images/Entité/Joueur/IsJumping.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Images\\Entité\\Joueur\\IsJumping.png",
+        "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "Images/Entité/Joueur/IsFalling.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Images\\Entité\\Joueur\\IsFalling.png",
+        "smoothed": true,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -346,7 +382,12 @@
         "zoomFactor": 1
       },
       "objectsGroups": [],
-      "variables": [],
+      "variables": [
+        {
+          "name": "Saut",
+          "value": "0"
+        }
+      ],
       "instances": [],
       "objects": [
         {
@@ -388,6 +429,93 @@
                     {
                       "hasCustomCollisionMask": false,
                       "image": "Images\\Entité\\Joueur\\player.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 1,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "Images\\Entité\\Joueur\\ReadyToJump.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 1,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "Images\\Entité\\Joueur\\IsJumping.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 1,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "Images\\Entité\\Joueur\\IsFalling.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -509,6 +637,52 @@
             "g": 255,
             "r": 255
           }
+        },
+        {
+          "name": "Wall",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [
+            {
+              "canBeGrabbed": false,
+              "name": "Platform",
+              "platformType": "NormalPlatform",
+              "type": "PlatformBehavior::PlatformBehavior",
+              "yGrabOffset": 0
+            }
+          ],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 1,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "Images\\Platform\\Wall.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "events": [
@@ -614,7 +788,7 @@
                 "=",
                 "Player.X()+Player.Width()/2-PlayerHitBox.Width()/2",
                 "=",
-                "Player.Y()-1"
+                "Player.Y()+1"
               ],
               "subInstructions": []
             },
@@ -640,12 +814,12 @@
           "conditions": [
             {
               "type": {
-                "inverted": false,
+                "inverted": true,
                 "value": "KeyPressed"
               },
               "parameters": [
                 "",
-                "r"
+                "Space"
               ],
               "subInstructions": []
             }
@@ -654,12 +828,12 @@
             {
               "type": {
                 "inverted": false,
-                "value": "Scene"
+                "value": "ModVarScene"
               },
               "parameters": [
-                "",
-                "CurrentSceneName()",
-                "yes"
+                "Saut",
+                "=",
+                "1"
               ],
               "subInstructions": []
             }
@@ -673,12 +847,12 @@
           "conditions": [
             {
               "type": {
-                "inverted": false,
+                "inverted": true,
                 "value": "CollisionNP"
               },
               "parameters": [
                 "PlayerHitBox",
-                "Platform",
+                "Wall",
                 "",
                 ""
               ],
@@ -689,7 +863,171 @@
           "events": [
             {
               "disabled": false,
-              "folded": true,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlatformBehavior::IsOnFloor"
+                  },
+                  "parameters": [
+                    "Player",
+                    "PlatformerObject"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ChangeAnimation"
+                  },
+                  "parameters": [
+                    "Player",
+                    "=",
+                    "0"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlatformBehavior::IsJumping"
+                  },
+                  "parameters": [
+                    "Player",
+                    "PlatformerObject"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ChangeAnimation"
+                  },
+                  "parameters": [
+                    "Player",
+                    "=",
+                    "2"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "PlatformBehavior::IsFalling"
+                  },
+                  "parameters": [
+                    "Player",
+                    "PlatformerObject"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ChangeAnimation"
+                  },
+                  "parameters": [
+                    "Player",
+                    "=",
+                    "3"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            }
+          ]
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "PlayerHitBox",
+                "Wall",
+                "",
+                ""
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": [],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "Animation"
+                  },
+                  "parameters": [
+                    "Player",
+                    "!=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ChangeAnimation"
+                  },
+                  "parameters": [
+                    "Player",
+                    "=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": []
+            },
+            {
+              "disabled": false,
+              "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -735,52 +1073,44 @@
                   "subInstructions": []
                 }
               ],
-              "actions": [],
-              "events": [
+              "actions": [
                 {
-                  "disabled": false,
-                  "folded": false,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "PlatformBehavior::SetCanJump"
-                      },
-                      "parameters": [
-                        "Player",
-                        "PlatformerObject"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ResetTimer"
-                      },
-                      "parameters": [
-                        "",
-                        "\"JumpTimer\""
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjet"
-                      },
-                      "parameters": [
-                        "Player",
-                        "Direction",
-                        "*",
-                        "-1"
-                      ],
-                      "subInstructions": []
-                    }
+                  "type": {
+                    "inverted": false,
+                    "value": "PlatformBehavior::SetCanJump"
+                  },
+                  "parameters": [
+                    "Player",
+                    "PlatformerObject"
                   ],
-                  "events": []
+                  "subInstructions": []
                 },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ResetTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"JumpTimer\""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Player",
+                    "Direction",
+                    "*",
+                    "-1"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
                 {
                   "disabled": false,
                   "folded": false,
@@ -974,8 +1304,8 @@
           "locked": false,
           "name": "Player",
           "width": 0,
-          "x": 91,
-          "y": 385,
+          "x": 43,
+          "y": 394,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -998,36 +1328,6 @@
         },
         {
           "angle": 0,
-          "customSize": true,
-          "height": 195,
-          "layer": "",
-          "locked": false,
-          "name": "Platform",
-          "width": 21,
-          "x": 510,
-          "y": 175,
-          "zOrder": 3,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 125,
-          "layer": "",
-          "locked": false,
-          "name": "Platform",
-          "width": 21,
-          "x": 287,
-          "y": 53,
-          "zOrder": 3,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
           "customSize": false,
           "height": 0,
           "layer": "ToujoursCentre",
@@ -1042,46 +1342,16 @@
           "initialVariables": []
         },
         {
-          "angle": 0,
-          "customSize": true,
-          "height": 344,
-          "layer": "",
-          "locked": false,
-          "name": "Platform",
-          "width": 21,
-          "x": 10,
-          "y": 139,
-          "zOrder": 3,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
           "angle": -180,
           "customSize": true,
           "height": 21,
           "layer": "",
           "locked": false,
           "name": "Platform",
-          "width": 930,
+          "width": 657,
           "x": 10,
           "y": 465,
           "zOrder": 2,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "height": 395,
-          "layer": "",
-          "locked": false,
-          "name": "Platform",
-          "width": 21,
-          "x": 646,
-          "y": 78,
-          "zOrder": 3,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -1097,6 +1367,66 @@
           "x": 419,
           "y": 60,
           "zOrder": 5,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 398,
+          "layer": "",
+          "locked": false,
+          "name": "Wall",
+          "width": 20,
+          "x": 647,
+          "y": 75,
+          "zOrder": 6,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 171,
+          "layer": "",
+          "locked": false,
+          "name": "Wall",
+          "width": 20,
+          "x": 510,
+          "y": 178,
+          "zOrder": 6,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 180,
+          "layer": "",
+          "locked": false,
+          "name": "Wall",
+          "width": 20,
+          "x": 287,
+          "y": -2,
+          "zOrder": 6,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 398,
+          "layer": "",
+          "locked": false,
+          "name": "Wall",
+          "width": 20,
+          "x": 10,
+          "y": 78,
+          "zOrder": 6,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
