@@ -356,7 +356,7 @@
           "variables": [
             {
               "name": "Direction",
-              "value": "0"
+              "value": "1"
             }
           ],
           "behaviors": [
@@ -656,7 +656,7 @@
           "events": [
             {
               "disabled": false,
-              "folded": false,
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -688,7 +688,7 @@
                   },
                   "parameters": [
                     "",
-                    "1",
+                    "0.4",
                     "\"JumpTimer\""
                   ],
                   "subInstructions": []
@@ -708,30 +708,27 @@
                   "disabled": false,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "VarObjet"
-                      },
-                      "parameters": [
-                        "Player",
-                        "Direction",
-                        "=",
-                        "0"
-                      ],
-                      "subInstructions": []
-                    }
-                  ],
+                  "conditions": [],
                   "actions": [
                     {
                       "type": {
                         "inverted": false,
-                        "value": "FlipX"
+                        "value": "PlatformBehavior::SetCanJump"
                       },
                       "parameters": [
                         "Player",
-                        "yes"
+                        "PlatformerObject"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ResetTimer"
+                      },
+                      "parameters": [
+                        "",
+                        "\"JumpTimer\""
                       ],
                       "subInstructions": []
                     },
@@ -743,8 +740,8 @@
                       "parameters": [
                         "Player",
                         "Direction",
-                        "=",
-                        "1"
+                        "*",
+                        "-1"
                       ],
                       "subInstructions": []
                     }
@@ -781,19 +778,6 @@
                         "no"
                       ],
                       "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "ModVarObjet"
-                      },
-                      "parameters": [
-                        "Player",
-                        "Direction",
-                        "=",
-                        "0"
-                      ],
-                      "subInstructions": []
                     }
                   ],
                   "events": []
@@ -802,16 +786,30 @@
                   "disabled": false,
                   "folded": false,
                   "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "VarObjet"
+                      },
+                      "parameters": [
+                        "Player",
+                        "Direction",
+                        "=",
+                        "-1"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
                   "actions": [
                     {
                       "type": {
                         "inverted": false,
-                        "value": "ResetTimer"
+                        "value": "FlipX"
                       },
                       "parameters": [
-                        "",
-                        "\"JumpTimer\""
+                        "Player",
+                        "yes"
                       ],
                       "subInstructions": []
                     }
@@ -836,7 +834,7 @@
                 "Player",
                 "Direction",
                 "=",
-                "0"
+                "1"
               ],
               "subInstructions": []
             }
@@ -870,7 +868,7 @@
                 "Player",
                 "Direction",
                 "=",
-                "1"
+                "-1"
               ],
               "subInstructions": []
             }
@@ -973,8 +971,8 @@
           "locked": false,
           "name": "Platform",
           "width": 21,
-          "x": 10,
-          "y": 139,
+          "x": 510,
+          "y": 28,
           "zOrder": 3,
           "numberProperties": [],
           "stringProperties": [],
@@ -1006,6 +1004,21 @@
           "x": 10,
           "y": 9,
           "zOrder": 4,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 344,
+          "layer": "",
+          "locked": false,
+          "name": "Platform",
+          "width": 21,
+          "x": 10,
+          "y": 139,
+          "zOrder": 3,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
