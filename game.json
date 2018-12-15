@@ -800,7 +800,7 @@
               "parameters": [
                 "InfosText",
                 "=",
-                "\"Direction: \" + ToString(Player.Variable(Direction)) + NewLine() +\n\"Chrono Jump: \"  + ToString(TimerElapsedTime(\"JumpTimer\")) + NewLine() +\n\"SpeedRun: \" + ToString(trunc(TimeFromStart()))"
+                "\"Direction: \" + ToString(Player.Variable(Direction)) + NewLine() +\n\"Jump: \" + ToString(Variable(Saut)) + NewLine() +\n\"Chrono Jump: \"  + ToString(TimerElapsedTime(\"JumpTimer\")) + NewLine() +\n\"SpeedRun: \" + ToString(trunc(TimeFromStart()))"
               ],
               "subInstructions": []
             }
@@ -833,6 +833,85 @@
               "parameters": [
                 "Saut",
                 "=",
+                "1"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "PlayerHitBox",
+                "Wall",
+                "",
+                ""
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "KeyPressed"
+              },
+              "parameters": [
+                "",
+                "Space"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "Saut",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "KeyPressed"
+              },
+              "parameters": [
+                "",
+                "r"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "Scene"
+              },
+              "parameters": [
+                "Saut",
+                "CurrentSceneName()",
                 "1"
               ],
               "subInstructions": []
@@ -1030,6 +1109,18 @@
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "VarScene"
+                  },
+                  "parameters": [
+                    "Saut",
+                    "=",
+                    "1"
+                  ],
+                  "subInstructions": []
+                },
                 {
                   "type": {
                     "inverted": false,
@@ -1304,8 +1395,8 @@
           "locked": false,
           "name": "Player",
           "width": 0,
-          "x": 43,
-          "y": 394,
+          "x": 41,
+          "y": 412,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
