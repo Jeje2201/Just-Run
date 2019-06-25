@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 97,
+    "build": 98,
     "major": 4,
     "minor": 0,
     "revision": 0
@@ -14,7 +14,8 @@
     "orientation": "landscape",
     "packageName": "com.example.gamename",
     "projectFile": "C:\\Users\\jerem\\Documents\\Just-Run\\game.json",
-    "sizeOnStartupMode": "adaptWidth",
+    "scaleMode": "linear",
+    "sizeOnStartupMode": "adaptHeight",
     "useExternalSourceFiles": false,
     "version": "1.0.0",
     "winExecutableFilename": "",
@@ -196,6 +197,47 @@
         "metadata": "",
         "name": "Images\\Autre\\BackGroundNiveaux.png",
         "smoothed": true,
+        "userAdded": true
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "Images/Autre/BgAcceuil.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Images\\Autre\\BgAcceuil.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "Images/Autre/selection1.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Images\\Autre\\selection1.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "Images/Autre/selection2.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Images\\Autre\\selection2.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "Font/Roboto-Light.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "Font\\Roboto-Light.ttf",
+        "userAdded": true
+      },
+      {
+        "file": "Font/Bebas Neue.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "Font\\Bebas Neue.ttf",
         "userAdded": true
       }
     ],
@@ -382,7 +424,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 1
+        "zoomFactor": 0.8776
       },
       "objectsGroups": [],
       "variables": [
@@ -400,15 +442,15 @@
           "locked": false,
           "name": "Selection",
           "width": 0,
-          "x": 113,
-          "y": 339,
+          "x": 21,
+          "y": 431,
           "zOrder": 5,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": [
             {
               "name": "TextObject",
-              "value": "Quitter"
+              "value": "Credit"
             },
             {
               "name": "Numero",
@@ -428,15 +470,15 @@
           "locked": false,
           "name": "Selection",
           "width": 0,
-          "x": 112,
-          "y": 183,
+          "x": 22,
+          "y": 311,
           "zOrder": 5,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": [
             {
               "name": "TextObject",
-              "value": "Commencer"
+              "value": "Play"
             },
             {
               "name": "Numero",
@@ -456,8 +498,8 @@
           "locked": false,
           "name": "Selection",
           "width": 0,
-          "x": 110,
-          "y": 264,
+          "x": 19,
+          "y": 371,
           "zOrder": 5,
           "numberProperties": [],
           "stringProperties": [],
@@ -478,21 +520,6 @@
         },
         {
           "angle": 0,
-          "customSize": true,
-          "height": 649,
-          "layer": "",
-          "locked": true,
-          "name": "BackGroundTexte",
-          "width": 300,
-          "x": 99,
-          "y": -25,
-          "zOrder": 1,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
           "customSize": false,
           "height": 0,
           "layer": "",
@@ -508,30 +535,45 @@
         },
         {
           "angle": 0,
-          "customSize": true,
-          "height": 603,
+          "customSize": false,
+          "height": 0,
           "layer": "",
-          "locked": true,
-          "name": "BackGroundImage",
-          "width": 1072,
-          "x": -26,
+          "locked": false,
+          "name": "BackGround",
+          "width": 0,
+          "x": 0,
           "y": 0,
-          "zOrder": 0,
+          "zOrder": -1,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
         },
         {
           "angle": 0,
-          "customSize": true,
-          "height": 50,
+          "customSize": false,
+          "height": 0,
           "layer": "",
           "locked": false,
-          "name": "BackGroundSelectedTexte",
-          "width": 350,
-          "x": 73,
-          "y": 180,
-          "zOrder": 2,
+          "name": "SelectText2",
+          "width": 0,
+          "x": 527,
+          "y": 315,
+          "zOrder": 7,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "SelectText1",
+          "width": 0,
+          "x": 307,
+          "y": 310,
+          "zOrder": 9,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -553,7 +595,7 @@
           ],
           "behaviors": [],
           "string": "Selection",
-          "font": "",
+          "font": "Font\\Bebas Neue.ttf",
           "characterSize": 40,
           "color": {
             "b": 255,
@@ -562,7 +604,7 @@
           }
         },
         {
-          "name": "BackGroundSelectedTexte",
+          "name": "SelectText1",
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
@@ -573,12 +615,12 @@
               "useMultipleDirections": false,
               "directions": [
                 {
-                  "looping": false,
-                  "timeBetweenFrames": 0.08,
+                  "looping": true,
+                  "timeBetweenFrames": 0.2,
                   "sprites": [
                     {
                       "hasCustomCollisionMask": false,
-                      "image": "Images\\Autre\\backgroundTexteMenu.png",
+                      "image": "Images\\Autre\\selection1.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -592,22 +634,10 @@
                         "y": 0
                       },
                       "customCollisionMask": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "",
-              "useMultipleDirections": false,
-              "directions": [
-                {
-                  "looping": false,
-                  "timeBetweenFrames": 0.08,
-                  "sprites": [
+                    },
                     {
                       "hasCustomCollisionMask": false,
-                      "image": "Images\\Autre\\RubanChoixNiveau.png",
+                      "image": "Images\\Autre\\selection2.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -629,7 +659,7 @@
           ]
         },
         {
-          "name": "BackGroundTexte",
+          "name": "SelectText2",
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
@@ -640,12 +670,29 @@
               "useMultipleDirections": false,
               "directions": [
                 {
-                  "looping": false,
-                  "timeBetweenFrames": 0.08,
+                  "looping": true,
+                  "timeBetweenFrames": 0.2,
                   "sprites": [
                     {
                       "hasCustomCollisionMask": false,
-                      "image": "Images\\Autre\\backgroundTexteMenu.png",
+                      "image": "Images\\Autre\\selection1.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    },
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "Images\\Autre\\selection2.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -685,7 +732,25 @@
           }
         },
         {
-          "name": "BackGroundImage",
+          "bold": false,
+          "italic": false,
+          "name": "NewObject",
+          "smoothed": true,
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "Text",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 255,
+            "g": 255,
+            "r": 255
+          }
+        },
+        {
+          "name": "BackGround",
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
@@ -701,7 +766,7 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": false,
-                      "image": "..\\..\\Downloads\\megumin__konosuba__by_greenmapple17-d9wtxo2.png",
+                      "image": "Images\\Autre\\BgAcceuil.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -761,20 +826,7 @@
               "subInstructions": []
             }
           ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "Opacity"
-              },
-              "parameters": [
-                "BackGroundTexte",
-                "=",
-                "100"
-              ],
-              "subInstructions": []
-            }
-          ],
+          "actions": [],
           "events": [
             {
               "disabled": false,
@@ -792,6 +844,18 @@
                     "Selection",
                     "=",
                     "Selection.VariableString(TextObject)"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MettreX"
+                  },
+                  "parameters": [
+                    "Selection",
+                    "=",
+                    "SceneWindowWidth()/2-Selection.Width()/2 "
                   ],
                   "subInstructions": []
                 }
@@ -964,27 +1028,6 @@
               "disabled": false,
               "folded": false,
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "MettreY"
-                  },
-                  "parameters": [
-                    "BackGroundSelectedTexte",
-                    "=",
-                    "180+Variable(selection)*80"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            },
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
                   "type": {
@@ -998,60 +1041,54 @@
                     "Variable(selection)"
                   ],
                   "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "KeyPressed"
-                      },
-                      "parameters": [
-                        "",
-                        "Space"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "KeyPressed"
-                      },
-                      "parameters": [
-                        "",
-                        "Return"
-                      ],
-                      "subInstructions": []
-                    },
-                    {
-                      "type": {
-                        "inverted": false,
-                        "value": "KeyPressed"
-                      },
-                      "parameters": [
-                        "",
-                        "d"
-                      ],
-                      "subInstructions": []
-                    }
-                  ]
                 }
               ],
               "actions": [
                 {
                   "type": {
                     "inverted": false,
-                    "value": "Scene"
+                    "value": "MettreX"
                   },
                   "parameters": [
-                    "",
-                    "Selection.VariableString(Scene)",
-                    ""
+                    "SelectText1",
+                    "=",
+                    "Selection.X()-110"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MettreX"
+                  },
+                  "parameters": [
+                    "SelectText2",
+                    "=",
+                    "Selection.X()+Selection.Width()+110-SelectText2.Width()"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MettreY"
+                  },
+                  "parameters": [
+                    "SelectText1",
+                    "=",
+                    "Selection.Y()+Selection.Height()/2-SelectText1.Height()/2\n"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MettreY"
+                  },
+                  "parameters": [
+                    "SelectText2",
+                    "=",
+                    "Selection.Y()+Selection.Height()/2-SelectText2.Height()/2"
                   ],
                   "subInstructions": []
                 }
@@ -1065,24 +1102,55 @@
                     {
                       "type": {
                         "inverted": false,
-                        "value": "VarObjet"
+                        "value": "BuiltinCommonInstructions::Or"
                       },
-                      "parameters": [
-                        "Selection",
-                        "Numero",
-                        "=",
-                        "2"
-                      ],
-                      "subInstructions": []
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "KeyPressed"
+                          },
+                          "parameters": [
+                            "",
+                            "Space"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "KeyPressed"
+                          },
+                          "parameters": [
+                            "",
+                            "Return"
+                          ],
+                          "subInstructions": []
+                        },
+                        {
+                          "type": {
+                            "inverted": false,
+                            "value": "KeyPressed"
+                          },
+                          "parameters": [
+                            "",
+                            "d"
+                          ],
+                          "subInstructions": []
+                        }
+                      ]
                     }
                   ],
                   "actions": [
                     {
                       "type": {
                         "inverted": false,
-                        "value": "Quit"
+                        "value": "Scene"
                       },
                       "parameters": [
+                        "",
+                        "Selection.VariableString(Scene)",
                         ""
                       ],
                       "subInstructions": []
@@ -1172,6 +1240,7 @@
               "maxFallingSpeed": 700,
               "maxSpeed": 250,
               "name": "PlatformerObject",
+              "roundCoordinates": false,
               "slopeMaxAngle": 60,
               "type": "PlatformBehavior::PlatformerObjectBehavior",
               "xGrabTolerance": 10,
